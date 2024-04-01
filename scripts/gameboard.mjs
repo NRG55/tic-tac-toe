@@ -1,27 +1,28 @@
 const gameboard = (function() {
-    const rows = 3;
-    const columns = 3;
-    const board = [];
+    const board = new Array(9);
 
-    function createGameboard() {
-        for (let i = 0; i < rows; i++) {
-            board[i] = [];
-            // console.log(board[i])
-            for (let j = 0; j < columns; j++) {
-                 board[i][j] = "";
-            }           
+    const setBoardBox = (index, symbol) => {
+        board[index] = symbol;
+    };
+
+    const clearGameboard = () => {
+        for (let i = 0; i < 9; i++ ) {
+            board[i] = "";
         }        
-    } 
-    
-    function clearGameboard() {
-        board = [];
     }
 
+    clearGameboard();
+    console.log(board)
     
-    return {createGameboard,
+    
+
+    
+    return {setBoardBox,
             clearGameboard,
             board}
 })();
 
-gameboard.createGameboard()
-console.log(gameboard.board)
+export default gameboard
+
+// gameboard.createGameboard()
+// console.log(gameboard.board)
