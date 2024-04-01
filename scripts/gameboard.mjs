@@ -11,11 +11,17 @@ const gameboard = (function() {
                  board[i][j] = "";
             }           
         }        
-    }   
+    } 
+    
+    function clearGameboard() {
+        board = [];
+    }
+
+    
     return {createGameboard,
+            clearGameboard,
             board}
 })();
-
 
 gameboard.createGameboard()
 console.log(gameboard.board)
