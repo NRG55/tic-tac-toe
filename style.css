@@ -1,0 +1,66 @@
+:root {
+    --box-size: 100px;
+    --symbol-size: calc(var(--box-size) * .9);
+}
+
+body {
+    margin: 0;  
+}
+
+.gameboard {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.board-box {
+    width: var(--box-size);
+    height: var(--box-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.board-box.x::before,
+.board-box.x::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--symbol-size) * .2);
+    height: var(--symbol-size);
+    background-color: black;
+}
+
+.board-box.x::before {
+    transform: rotate(45deg);
+}
+
+.board-box.x::after {
+    transform: rotate(-45deg);
+}
+
+.board-box.o::before,
+.board-box.o::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.board-box.o::before {
+    width: calc(var(--symbol-size) * .9);
+    height: calc(var(--symbol-size) * .9);
+    background-color: black;
+}
+
+.board-box.o::after {
+    width: calc(var(--symbol-size) * .5);
+    height: calc(var(--symbol-size) * .5);
+    background-color: white;
+}

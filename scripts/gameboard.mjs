@@ -26,5 +26,5 @@ export default gameboard
 
 // gameboard.createGameboard()
 // console.log(gameboard.board)
-console.log(gameboard.setBoardBox(5, 'X'))
-console.log(gameboard.board)
+// console.log(gameboard.setBoardBox(5, 'X'))
+// console.log(gameboard.board)

@@ -8,8 +8,8 @@ const playersList = (function(){
     function addPlayer(player) {
       // const playerOne = prompt('Player 1 name:');
       // const playerTwo = prompt('Player 2 name:');
-      const symbolOne = 'X';
-      const symbolTwo = 'O';
+      const symbolOne = 'x';
+      const symbolTwo = 'X';
 
       // createPlayer(playerOne, symbolOne);
       // createPlayer(playerTwo, symbolTwo); 
@@ -24,8 +24,8 @@ const playersList = (function(){
     }
 })();
 
-playersList.addPlayer({name:'Bob', symbol: "O"});
-playersList.addPlayer({name:'Tom', symbol:"X"});
+playersList.addPlayer({name:'Bob', symbol: "X"});
+playersList.addPlayer({name:'Tom', symbol: "O"});
 // playersList.addPlayer();
 // console.log(playersList);
 

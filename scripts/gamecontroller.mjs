@@ -2,37 +2,34 @@ import playersList from "./players.mjs";
 import gameboard from "./gameboard.mjs";
  
 
-// console.log(playersList)
+
 let playerOneTurn;
-playerOneTurn = !playerOneTurn;
-console.log(playerOneTurn)
+
 
 const gameController = (function() {
-    const playerOne = playersList.players[0];
-    const playerTwo = playersList.players[1];
-    let playerOneTurn;
-   
-    function startGame() {
-       const currentPlayer = playerOneTurn ? playerOne : playerTwo;
-       placeSymbol(3, currentPlayer.symbol);
-       placeSymbol(2, currentPlayer.symbol);
-       changeTurn()
-       console.log(currentPlayer.symbol)
-    }
+    const playerOne = playersList.players[0].symbol;
+    const playerTwo = playersList.players[1].symbol;
+    let currentPlayer;
+
+     function getCurrentPlayer() {
+      
+       currentPlayer = playerOneTurn ? playerOne : playerTwo;
     
-//    console.log(playerOne.symbol)
-    const placeSymbol = () => {
+       console.log(currentPlayer)
+       changeTurn()
+    
+      
+     }    
+ 
+
+    function placeSymbol(index, symbol) { 
+        symbol = getCurrentPlayer(); 
+        
+         console.log(player) 
    
-        gameboard.setBoardBox(0, playerOne.symbol);
-        gameboard.setBoardBox(1, playerOne.symbol);
-        gameboard.setBoardBox(2, playerTwo.symbol);
-        gameboard.setBoardBox(3, playerTwo.symbol);
-        gameboard.setBoardBox(4, playerOne.symbol);
-        gameboard.setBoardBox(5, playerTwo.symbol);
-        gameboard.setBoardBox(6, playerTwo.symbol);
-        gameboard.setBoardBox(7, playerTwo.symbol);
-        gameboard.setBoardBox(8, playerOne.symbol);
-        // console.log(playerOne.symbol)
+        gameboard.setBoardBox(index, player);
+        console.log(player) 
+        
     }
 
     const winningCombinations = [
@@ -61,20 +58,17 @@ const gameController = (function() {
     function isDraw() {
         return gameboard.board.every(box => {
             return box.includes('O') || box.includes('X')
-        })
-         
+        })         
     }
 
     function checkGameState() {
-        if (isWin()) {
+        if (isWin('O')) {
             console.log('WINNER!!')
-        } 
-
-        if (isDraw()) {
+        } else if (isDraw()) {
             console.log('DRAW')
-        }
-
-        changeTurn();
+        } else {
+            changeTurn();            
+        }        
     }
 
        
@@ -85,20 +79,24 @@ const gameController = (function() {
     isDraw, 
     winningCombinations,
     checkGameState,
-    startGame
+    getCurrentPlayer
+    
 }
 
 
 
 })()
+gameController.getCurrentPlayer();
+// gameController.getCurrentPlayer();
+gameController.getCurrentPlayer()
+// console.log(gameController.currentPlayer);
+// console.log(gameController.getCurrentPlayer()); 
 
-gameController.placeSymbol()
-
-console.log(gameController.isWin('O'))
+// console.log(gameController.isWin('O'))
 
 console.log(gameboard.board)
-console.log(gameController.isDraw())
-console.log(gameController.checkGameState())
+// console.log(gameController.isDraw())
+// console.log(gameController.checkGameState())
 
-gameController.startGame()
-gameController.startGame()
+// gameController.startGame()
+// gameController.startGame()
