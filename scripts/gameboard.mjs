@@ -1,6 +1,6 @@
 const gameboard = (function() {
     const board = new Array(9);
-
+     
     const setBoardBox = (index, symbol) => {
         board[index] = symbol;
     };
@@ -12,7 +12,7 @@ const gameboard = (function() {
     }
 
     clearGameboard();
-    console.log(board)
+    // console.log(board)
     
     
 
@@ -26,3 +26,5 @@ export default gameboard
 
 // gameboard.createGameboard()
 // console.log(gameboard.board)
+console.log(gameboard.setBoardBox(5, 'X'))
+console.log(gameboard.board)
