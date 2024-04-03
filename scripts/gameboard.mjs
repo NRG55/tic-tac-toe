@@ -1,30 +1,28 @@
-const gameboard = (function() {
-    const board = new Array(9);
-     
-    const setBoardBox = (index, symbol) => {
-        board[index] = symbol;
+import htmlController from "./htmlcontroller.mjs";
+import gameController from "./gamecontroller.mjs";
+
+const gameboard = (function() {   
+    const board = ["", "", "", "", "", "", "", "", ""]
+    
+    function update(index, currentPlayerSymbol) {
+        board[index] = currentPlayerSymbol;
+        console.log(board)
+        htmlController.render();
     };
 
-    const clearGameboard = () => {
-        for (let i = 0; i < 9; i++ ) {
-            board[i] = "";
-        }        
-    }
+    const getGameboard = () => board;
 
-    clearGameboard();
-    // console.log(board)
-    
-    
-
-    
-    return {setBoardBox,
-            clearGameboard,
-            board}
+    const buttonStart = document.querySelector('#button-start');    
+    buttonStart.addEventListener('click', () => {
+        gameController.startGame();
+    });
+   
+    return {
+        board,
+        update,
+        getGameboard
+       }
 })();
 
 export default gameboard
 
-// gameboard.createGameboard()
-// console.log(gameboard.board)
-// console.log(gameboard.setBoardBox(5, 'X'))
-// console.log(gameboard.board)

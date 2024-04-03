@@ -1,36 +1,35 @@
 import playersList from "./players.mjs";
 import gameboard from "./gameboard.mjs";
- 
-
-
-let playerOneTurn;
-
+import htmlController from "./htmlcontroller.mjs";
 
 const gameController = (function() {
-    const playerOne = playersList.players[0].symbol;
-    const playerTwo = playersList.players[1].symbol;
-    let currentPlayer;
-
-     function getCurrentPlayer() {
-      
-       currentPlayer = playerOneTurn ? playerOne : playerTwo;
-    
-       console.log(currentPlayer)
-       changeTurn()
-    
-      
-     }    
- 
-
-    function placeSymbol(index, symbol) { 
-        symbol = getCurrentPlayer(); 
-        
-         console.log(player) 
    
-        gameboard.setBoardBox(index, player);
-        console.log(player) 
+    let gameOver;
+    let currentPlayerIndex;
+
+    function handleClick(event) {
+        let boxIndex = parseInt(event.target.id);
         
-    }
+        if(gameboard.getGameboard()[boxIndex] !== "") {
+          return;
+        }
+        gameboard.update(boxIndex, playersList.players[currentPlayerIndex].symbol);       
+        currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;        
+    } 
+
+    function startGame() {       
+        playersList.players = [
+            playersList.createPlayer(document.querySelector("#player1").value, "X"),
+            playersList.createPlayer(document.querySelector("#player2").value, "O"),
+        ]
+        currentPlayerIndex = 0;
+        gameOver = false;  
+        htmlController.render();
+        const boardBoxes = document.querySelectorAll('.board-box')
+        boardBoxes.forEach((box) => {
+            box.addEventListener('click', handleClick);           
+        })        
+    }     
 
     const winningCombinations = [
         [0, 1, 2],
@@ -41,11 +40,7 @@ const gameController = (function() {
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6]
-        ];    
-
-    const changeTurn = () => {
-        playerOneTurn = !playerOneTurn;
-    } 
+        ];     
     
     function isWin(currentSymbol) {
         return winningCombinations.some((combination) => {
@@ -69,34 +64,11 @@ const gameController = (function() {
         } else {
             changeTurn();            
         }        
-    }
-
-       
-
-   
-   return {placeSymbol, 
-    isWin, 
-    isDraw, 
-    winningCombinations,
-    checkGameState,
-    getCurrentPlayer
-    
-}
-
-
+    }   
+   return {startGame,
+           handleClick
+          }
 
 })()
-gameController.getCurrentPlayer();
-// gameController.getCurrentPlayer();
-gameController.getCurrentPlayer()
-// console.log(gameController.currentPlayer);
-// console.log(gameController.getCurrentPlayer()); 
 
-// console.log(gameController.isWin('O'))
-
-console.log(gameboard.board)
-// console.log(gameController.isDraw())
-// console.log(gameController.checkGameState())
-
-// gameController.startGame()
-// gameController.startGame()
+export default gameController

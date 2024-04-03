@@ -1,23 +1,30 @@
 import gameboard from "./gameboard.mjs";
+import gameController from "./gamecontroller.mjs";
 
 const htmlController = (() => {
-    const boardBoxes = document.querySelectorAll('.board-box');
-    const box = document.querySelector('.board-box');
-    boardBoxes.forEach((element) => {
-       element.addEventListener('click', (event) => {
-        const boxIndex = parseInt(event.target.dataset.index);       
-        console.log(boxIndex);
+    const buttonStart = document.querySelector('#button-start');    
+    const gameBoard = document.querySelector(".gameboard");    
 
-       })
-       
-       
+    function render() { 
+        let boardHtml = "";     
+
+        gameboard.board.forEach((box, index) => {
+            boardHtml += `<div class="board-box" id="${index}">${box}</div>`
+        })
+        gameBoard.innerHTML = boardHtml;        
+
+        const boardBoxes = document.querySelectorAll('.board-box')
+        boardBoxes.forEach((box) => {
+            box.addEventListener('click', gameController.handleClick);           
+        })
+    }    
+
+    buttonStart.addEventListener('click', () => {
+        gameController.startGame();
     })
-
-    return {
-        boardBoxes,
-       
+    return {       
+        render       
     }
-
 })()
 
-console.log(gameboard)
+export default htmlController;
