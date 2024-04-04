@@ -5,7 +5,7 @@ const htmlController = (() => {
     const buttonStart = document.querySelector('#button-start');
     const buttonRestart = document.querySelector('#button-restart');    
     const gameBoard = document.querySelector(".gameboard"); 
-    
+    // const roundResult = document.querySelector(".round-result");   
     const gameMessage = document.querySelector(".round-result");   
 
     function render() { 
@@ -24,7 +24,7 @@ const htmlController = (() => {
 
     function updateSymboles() {
         const boardBoxes = document.querySelectorAll('.board-box');
-        
+
         boardBoxes.forEach((box) => {
                 if (box.innerHTML === 'X')
                 box.classList.add('board-box-x');
@@ -35,7 +35,9 @@ const htmlController = (() => {
     }
     
     function displayMessage(message) {
+
         gameMessage.innerHTML = message;
+        gameMessage.appendChild(buttonRestart)
     }
 
     buttonStart.addEventListener('click', () => {

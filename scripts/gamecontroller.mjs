@@ -10,7 +10,7 @@ const gameController = (function() {
         playersList.players = [
             playersList.createPlayer(document.querySelector("#player1").value, "X"),
             playersList.createPlayer(document.querySelector("#player2").value, "O"),
-        ]
+        ];
 
         currentPlayerIndex = 0;
         gameOver = false;
@@ -31,19 +31,24 @@ const gameController = (function() {
         }
                 
         gameboard.update(boxIndex, playersList.players[currentPlayerIndex].symbol);       
-
+        let result = document.querySelector('.round-result')
         if (isWin(playersList.players[currentPlayerIndex].symbol)) {
             gameOver = true;
+            
+            result.style.display = 'block';
+            console.log(result)
             htmlController.displayMessage(`${playersList.players[currentPlayerIndex].name}'WON!!!!!'`);           
         } else if (isDraw()) {
-            gameOver = true;      
+            gameOver = true; 
+            result.style.display = 'block';     
             htmlController.displayMessage("It's a draw!");
-        }        
-   
+
+        }    
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;        
     } 
 
     function restartGame() {
+        let result = document.querySelector('.round-result')
         console.log('test')
         for (let i = 0; i < 9; i++) {
             gameboard.update(i, "");
@@ -51,7 +56,8 @@ const gameController = (function() {
         console.log(gameboard.board)
         htmlController.render();
         htmlController.gameMessage.innerHTML = "";
-        gameOver = false;        
+        result.style.display = 'none';  
+        gameOver = false; 
     }    
     
     function isWin(currentSymbol) {
