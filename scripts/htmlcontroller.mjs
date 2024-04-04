@@ -3,7 +3,8 @@ import gameController from "./gamecontroller.mjs";
 
 const htmlController = (() => {
     const buttonStart = document.querySelector('#button-start');    
-    const gameBoard = document.querySelector(".gameboard");    
+    const gameBoard = document.querySelector(".gameboard"); 
+    const messageDisplay  = document.querySelector(".game-message");    
 
     function render() { 
         let boardHtml = "";     
@@ -17,13 +18,18 @@ const htmlController = (() => {
         boardBoxes.forEach((box) => {
             box.addEventListener('click', gameController.handleClick);           
         })
-    }    
+    }
+    
+    function displayMessage(message) {
+        messageDisplay.innerHTML = message;
+    }
 
     buttonStart.addEventListener('click', () => {
         gameController.startGame();
     })
     return {       
-        render       
+        render,
+        displayMessage       
     }
 })()
 

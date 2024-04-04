@@ -16,6 +16,11 @@ const gameboard = (function() {
     buttonStart.addEventListener('click', () => {
         gameController.startGame();
     });
+
+    const buttonRestart = document.querySelector('#button-restart');    
+    buttonRestart.addEventListener('click', () => {
+        gameController.restartGame();
+    });
    
     return {
         board,
