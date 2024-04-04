@@ -11,12 +11,14 @@ const gameController = (function() {
             playersList.createPlayer(document.querySelector("#player1").value, "X"),
             playersList.createPlayer(document.querySelector("#player2").value, "O"),
         ]
+
         currentPlayerIndex = 0;
-        gameOver = false;  
+        gameOver = false;
+         
         htmlController.render();
         const boardBoxes = document.querySelectorAll('.board-box')
         boardBoxes.forEach((box) => {
-            box.addEventListener('click', handleClick);           
+            box.addEventListener('click', handleClick);                
         })        
     } 
     
@@ -27,7 +29,8 @@ const gameController = (function() {
         if(gameboard.getGameboard()[boxIndex] !== "") {
           return;
         }
-        gameboard.update(boxIndex, playersList.players[currentPlayerIndex].symbol); 
+                
+        gameboard.update(boxIndex, playersList.players[currentPlayerIndex].symbol);       
 
         if (isWin(playersList.players[currentPlayerIndex].symbol)) {
             gameOver = true;
@@ -47,8 +50,8 @@ const gameController = (function() {
         } 
         console.log(gameboard.board)
         htmlController.render();
-        gameOver = false;
-        
+        htmlController.gameMessage.innerHTML = "";
+        gameOver = false;        
     }    
     
     function isWin(currentSymbol) {
@@ -83,4 +86,4 @@ const gameController = (function() {
 
 })()
 
-export default gameController
+export default gameController;

@@ -1,26 +1,25 @@
 import htmlController from "./htmlcontroller.mjs";
-import gameController from "./gamecontroller.mjs";
+
 
 const gameboard = (function() {   
     const board = ["", "", "", "", "", "", "", "", ""]
     
-    function update(index, currentPlayerSymbol) {
+    function update(index, currentPlayerSymbol) { 
         board[index] = currentPlayerSymbol;
         console.log(board)
-        htmlController.render();
+        htmlController.render();         
+       
+        const boardBoxes = document.querySelectorAll('.board-box');
+        boardBoxes.forEach((box) => {
+                if (box.innerHTML === 'X')
+                box.classList.add('board-box-x');
+
+                if (box.innerHTML === 'O')
+                box.classList.add('board-box-o');
+                })        
     };
 
-    const getGameboard = () => board;
-
-    const buttonStart = document.querySelector('#button-start');    
-    buttonStart.addEventListener('click', () => {
-        gameController.startGame();
-    });
-
-    const buttonRestart = document.querySelector('#button-restart');    
-    buttonRestart.addEventListener('click', () => {
-        gameController.restartGame();
-    });
+    const getGameboard = () => board;    
    
     return {
         board,
@@ -29,5 +28,5 @@ const gameboard = (function() {
        }
 })();
 
-export default gameboard
+export default gameboard;
 

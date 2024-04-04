@@ -14,4 +14,4 @@ const playersList = (function(){
     }
 })();
 
-export default playersList
+export default playersList;

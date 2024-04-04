@@ -29,8 +29,8 @@ body {
     cursor: pointer;
 }
 
-.board-box.x::before,
-.board-box.x::after {
+.board-box-x::before,
+.board-box-x::after {
     content: '';
     position: absolute;
     width: calc(var(--symbol-size) * .2);
@@ -38,28 +38,28 @@ body {
     background-color: black;
 }
 
-.board-box.x::before {
+.board-box-x::before {
     transform: rotate(45deg);
 }
 
-.board-box.x::after {
+.board-box-x::after {
     transform: rotate(-45deg);
 }
 
-.board-box.o::before,
-.board-box.o::after {
+.board-box-o::before,
+.board-box-o::after {
     content: '';
     position: absolute;
     border-radius: 50%;
 }
 
-.board-box.o::before {
+.board-box-o::before {
     width: calc(var(--symbol-size) * .9);
     height: calc(var(--symbol-size) * .9);
     background-color: black;
 }
 
-.board-box.o::after {
+.board-box-o::after {
     width: calc(var(--symbol-size) * .5);
     height: calc(var(--symbol-size) * .5);
     background-color: white;
