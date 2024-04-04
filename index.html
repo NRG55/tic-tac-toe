@@ -10,15 +10,21 @@
     <header>
 
     </header>
-    <main >
+    <main>
         <div class="controls">
             <input type="text" id="player1" placeholder="Player 1">
             <input type="text" id="player2" placeholder="Player 2">
-            <button id="button-start">Start</button>
-            <button id="button-restart">Restart</button>
+            <button id="button-start">Start</button>           
         </div>
         <div class="game-message"></div>
-        <div class="gameboard"></div>    
+        <button id="button-restart">Restart</button>
+        <div class="gameboard">
+            
+        </div> 
+        <div class="round-result">
+            <p class="result-winner"></p>
+            <p class="result-text"></p>
+        </div>   
     </main>
 
  <script type="module" src="scripts/gamecontroller.mjs"></script>

@@ -7,16 +7,8 @@ const gameboard = (function() {
     function update(index, currentPlayerSymbol) { 
         board[index] = currentPlayerSymbol;
         console.log(board)
-        htmlController.render();         
-       
-        const boardBoxes = document.querySelectorAll('.board-box');
-        boardBoxes.forEach((box) => {
-                if (box.innerHTML === 'X')
-                box.classList.add('board-box-x');
-
-                if (box.innerHTML === 'O')
-                box.classList.add('board-box-o');
-                })        
+        htmlController.render();        
+        htmlController.updateSymboles();
     };
 
     const getGameboard = () => board;    

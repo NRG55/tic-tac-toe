@@ -5,8 +5,8 @@ const htmlController = (() => {
     const buttonStart = document.querySelector('#button-start');
     const buttonRestart = document.querySelector('#button-restart');    
     const gameBoard = document.querySelector(".gameboard"); 
-   
-    const gameMessage = document.querySelector(".game-message");   
+    
+    const gameMessage = document.querySelector(".round-result");   
 
     function render() { 
         let boardHtml = "";     
@@ -20,6 +20,18 @@ const htmlController = (() => {
         boardBoxes.forEach((box) => {
             box.addEventListener('click', gameController.handleClick);           
         })
+    }
+
+    function updateSymboles() {
+        const boardBoxes = document.querySelectorAll('.board-box');
+        
+        boardBoxes.forEach((box) => {
+                if (box.innerHTML === 'X')
+                box.classList.add('board-box-x');
+
+                if (box.innerHTML === 'O')
+                box.classList.add('board-box-o');
+                })        
     }
     
     function displayMessage(message) {
@@ -36,7 +48,8 @@ const htmlController = (() => {
     return {       
         render,
         displayMessage,
-        gameMessage,       
+        gameMessage,
+        updateSymboles       
     }
 })()
 
