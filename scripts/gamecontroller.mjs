@@ -38,12 +38,12 @@ const gameController = (function() {
         if (isWin(playersList.players[currentPlayerIndex].symbol)) {
             gameOver = true;
             
-            result.style.display = 'block';
+            result.style.display = 'grid';
             console.log(result)
-            htmlController.displayMessage(`${playersList.players[currentPlayerIndex].name}'WON!!!!!'`);           
+            htmlController.displayMessage(`${playersList.players[currentPlayerIndex].name} Wins!`);           
         } else if (isDraw()) {
             gameOver = true; 
-            result.style.display = 'block';     
+            result.style.display = 'grid';              
             htmlController.displayMessage("It's a draw!");
 
         }    

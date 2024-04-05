@@ -38,7 +38,9 @@ const htmlController = (() => {
     function displayMessage(message) {
 
         gameMessage.innerHTML = message;
+        gameMessage.classList.add('round-result')
         gameMessage.appendChild(buttonRestart)
+        buttonRestart.classList.add('#button-restart')
     }
 
     buttonStart.addEventListener('click', () => {
