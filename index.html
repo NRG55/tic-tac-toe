@@ -10,26 +10,33 @@
 <body>
     <header>
         <h1>TIC TAC TOE</h1>
-
     </header>
-    <main>
-        <div class="players-form">
-            <div class="players-input">
-            <img src="images/smile-one.svg" alt="">               
-            <input type="text" id="player1" placeholder="Player 1"> 
-            </div>
-            <div class="players-input"> 
-            <img src="images/smile-one.svg" alt="">            
-            <input type="text" id="player2" placeholder="Player 2">
-            </div>
-            <button id="button-start">Start</button>           
-        </div>
+    <main>       
         <div class="game-message"></div>        
         <div class="gameboard-container">
+            <div class="players-info">
+                <div class="player1-info">
+                    <img src="images/smile-one.svg" alt="">PLAYER 1
+                </div>
+                <div class="player2-info">
+                    <img src="images/smile-two.svg" alt="">PLAYER 2
+                </div>
+            </div>
             <div class="gameboard"></div>
             <div class="round-result">                
                 <button id="button-restart">Restart</button>
             </div> 
+        </div>
+        <div class="players-form">
+            <div class="players-input">
+                <img src="images/smile-one.svg" alt="">               
+                <input type="text" id="player1" placeholder="Player 1"> 
+            </div>
+            <div class="players-input"> 
+                <img src="images/smile-two.svg" alt="">            
+                <input type="text" id="player2" placeholder="Player 2">
+            </div>
+            <button id="button-start">START</button>           
         </div>       
     </main>
 
