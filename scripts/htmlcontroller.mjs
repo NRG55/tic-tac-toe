@@ -3,9 +3,10 @@ import gameController from "./gamecontroller.mjs";
 
 const htmlController = (() => {
     const buttonStart = document.querySelector('#button-start');
-    const buttonRestart = document.querySelector('#button-restart');    
+    const buttonRestart = document.querySelector('#button-restart');
+    const gameBoardContainer = document.querySelector(".gameboard-container");     
     const gameBoard = document.querySelector(".gameboard"); 
-    // const roundResult = document.querySelector(".round-result");   
+    const playersForm = document.querySelector(".players-form");   
     const gameMessage = document.querySelector(".round-result");   
 
     function render() { 
@@ -49,9 +50,11 @@ const htmlController = (() => {
     })
     return {       
         render,
-        displayMessage,
+        displayMessage,       
+        updateSymboles,
         gameMessage,
-        updateSymboles       
+        playersForm,
+        gameBoardContainer       
     }
 })()
 

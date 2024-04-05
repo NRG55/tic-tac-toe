@@ -19,7 +19,10 @@ const gameController = (function() {
         const boardBoxes = document.querySelectorAll('.board-box')
         boardBoxes.forEach((box) => {
             box.addEventListener('click', handleClick);                
-        })        
+        }) 
+        
+        htmlController.playersForm.style.display = 'none'; 
+        htmlController.gameBoardContainer.style.display = 'block';   
     } 
     
     function handleClick(event) {
@@ -56,7 +59,8 @@ const gameController = (function() {
         console.log(gameboard.board)
         htmlController.render();
         htmlController.gameMessage.innerHTML = "";
-        result.style.display = 'none';  
+        result.style.display = 'none';
+        
         gameOver = false; 
     }    
     
