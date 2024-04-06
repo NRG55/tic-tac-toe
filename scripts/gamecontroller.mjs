@@ -13,16 +13,21 @@ const gameController = (function() {
         ];
 
         currentPlayerIndex = 0;
-        gameOver = false;
-         
+        gameOver = false;         
+        
         htmlController.render();
         const boardBoxes = document.querySelectorAll('.board-box')
         boardBoxes.forEach((box) => {
-            box.addEventListener('click', handleClick);                
-        }) 
+            box.addEventListener('click', handleClick);                     
+        })                 
         
         htmlController.playersForm.style.display = 'none'; 
-        htmlController.gameBoardContainer.style.display = 'block';   
+        htmlController.gameBoardContainer.style.display = 'block'; 
+        htmlController.playersInfo.style.visibility = 'visible';       
+        htmlController.playerOneName.innerHTML =  playersList.players[0].name;
+        htmlController.playerTwoName.innerHTML =  playersList.players[1].name; 
+
+        htmlController.selectPlayer('O');          
     } 
     
     function handleClick(event) {
@@ -34,35 +39,41 @@ const gameController = (function() {
         }
                 
         gameboard.update(boxIndex, playersList.players[currentPlayerIndex].symbol);       
-        let result = document.querySelector('.round-result')
+        let result = document.querySelector('.round-result');        
         if (isWin(playersList.players[currentPlayerIndex].symbol)) {
-            gameOver = true;
-            
-            result.style.display = 'grid';
-            console.log(result)
-            htmlController.displayMessage(`${playersList.players[currentPlayerIndex].name} Wins!`);           
+            gameOver = true;            
+            result.style.display = 'grid'; 
+            if(playersList.players[currentPlayerIndex].symbol === 'X') {         
+            htmlController.displayMessage(`Player 1 <br> 
+                                          ${playersList.players[currentPlayerIndex].name} <br> Wins!`); 
+            } 
+            htmlController.displayMessage(`Player 2 <br> 
+                                          ${playersList.players[currentPlayerIndex].name} <br> Wins!`);         
         } else if (isDraw()) {
             gameOver = true; 
             result.style.display = 'grid';              
             htmlController.displayMessage("It's a draw!");
+        } 
 
-        }    
+        htmlController.selectPlayer(playersList.players[currentPlayerIndex].symbol);
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;        
     } 
 
     function restartGame() {
-        let result = document.querySelector('.round-result')
-        console.log('test')
+        let result = document.querySelector('.round-result')        
         for (let i = 0; i < 9; i++) {
             gameboard.update(i, "");
         } 
-        console.log(gameboard.board)
+        
         htmlController.render();
         htmlController.gameMessage.innerHTML = "";
-        result.style.display = 'none';
-        
+        result.style.display = 'none';        
         gameOver = false; 
-    }    
+    } 
+    
+    function exitGame() {
+        location.reload();
+    }
     
     function isWin(currentSymbol) {
         const winningCombinations = [
@@ -91,7 +102,8 @@ const gameController = (function() {
     
    return {startGame,
            handleClick,
-           restartGame
+           restartGame,
+           exitGame
           }
 
 })()

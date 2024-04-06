@@ -10,16 +10,21 @@
 <body>
     <header>
         <h1>TIC TAC TOE</h1>
+        <button id="button-exit"></button>
     </header>
     <main>         
         <div class="players-info-main">
             <div class="players-info">
-                <div class="player1-info">
-                    <img src="images/smile-one.svg" alt="">PLAYER 1
-                </div>
-                <div class="player2-info">
-                    <img src="images/smile-two.svg" alt="">PLAYER 2
-                </div>
+                <div class="player1-info player1-glow"> 
+                    <div>PLAYER 1</div>
+                    <div><img src="images/smile-one.svg" alt=""></div>
+                    <div class="player1-name"></div>
+                </div>  
+                <div class="player2-info player2-glow"> 
+                    <div>PLAYER 2</div>
+                    <div><img src="images/smile-two.svg" alt=""></div>
+                    <div class="player2-name"></div>
+                </div>  
             </div>
         </div>
         <div class="gameboard-container">            
@@ -30,21 +35,25 @@
                     <button id="button-restart"></button>
                 </div>
             </div> 
-        </div>
+        </div>        
         <div class="players-form">
             <div class="players-input">
                 <img src="images/smile-one.svg" alt="">               
-                <input type="text" id="player1" placeholder="Player 1"> 
+                <input type="text" 
+                       id="player1"
+                       maxlength="10" 
+                       placeholder="Player 1"> 
             </div>
             <div class="players-input"> 
                 <img src="images/smile-two.svg" alt="">            
-                <input type="text" id="player2" placeholder="Player 2">
+                <input type="text" 
+                       id="player2" 
+                       maxlength="10" 
+                       placeholder="Player 2">
             </div>
             <button id="button-start">START</button>           
-        </div>       
+        </div>
     </main>
-
- <script type="module" src="scripts/gamecontroller.mjs"></script>
- 
+ <script type="module" src="scripts/gamecontroller.mjs"></script> 
 </body>
 </html>

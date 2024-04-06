@@ -1,16 +1,60 @@
 :root {
     --box-size: 100%;
     --symbol-size: calc(var(--box-size) * .9);
+    --grey: #2e4452;
 }
 
 body {
     margin: 0;
-    background-color: #2e4452;      
+    background-color: #2e4452;
+    height: 100vh; 
+    width: 100vw;         
 }
 
+/* -----------------HEADER---------------- */
+
+header { 
+    position: relative;  
+    text-align: center; 
+    padding: 0; 
+    margin: 0;
+    background-color: var(--grey); 
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);  
+}
+
+#button-exit {
+    position: absolute;
+    top: 28px;
+    right: 28px; 
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(images/exit.svg);
+    cursor: pointer;
+    width: 50px; 
+    height: 50px;      
+}
+
+#button-exit:hover {
+    filter: contrast(30%);
+}
+
+h1 {
+    font-family: "Tac One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    padding: 0;
+    padding-right: 12px;
+    margin: 0;
+    color:#d89d2e; 
+}
+
+/* -------------------MAIN------------------- */
+
 main {
-    width: 100%;
-    height: 100%;    
+    width: 100%; 
+    height: calc(100vh - 103px);
     display: grid;
     justify-content: center;
     align-content:start;
@@ -22,6 +66,8 @@ main {
     background-size: 40px;     
 }
 
+/* ----------------RLAYERS-FORM----------------- */
+
 .players-form {
     display: grid;    
     justify-items: center;
@@ -31,7 +77,7 @@ main {
     border-radius: 5px;
     padding: 60px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3); 
-    background-color: #2e4452;     
+    background-color: var(--grey);   
 }
 
 .players-input {
@@ -39,6 +85,32 @@ main {
     align-items: center;
     justify-content: center;   
 }
+
+#button-start {
+    border: none;
+    border-radius: 8px;
+    background-color: #d89d2e; 
+    cursor: pointer;   
+    width: 100%;
+    text-align: center;
+    font-family: "Tac One", sans-serif;
+    color: rgb(217, 224, 147);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    font-size: 2.4rem;
+}
+
+#button-restart {
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(images/restart.svg);
+    cursor: pointer;
+    width: 80px; 
+    height: 80px;
+    justify-self: center;   
+}
+
+/* -----------------GAMEBOARD----------------- */
 
 .gameboard-container { 
     display: none;  
@@ -73,7 +145,7 @@ main {
     cursor: pointer;
     width: 100%;
     height: 100%;
-    background-color: #2e4452;
+    background-color: var(--grey); 
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -93,10 +165,7 @@ main {
 }
 
 .board-box-x::before,
-.board-box-x::after,
-.board-box-x:hover::before,
-.board-box-x:hover::after
- {
+.board-box-x::after {
     content: '';
     position: absolute;
     width: calc(var(--symbol-size) * .15);
@@ -128,34 +197,17 @@ main {
 .board-box-o::after {
     width: calc(var(--symbol-size) * .6);
     height: calc(var(--symbol-size) * .6);
-    background-color: #2e4452;
+    background-color: var(--grey); 
+}
+ 
+.board-box:not(.board-box-x):not(.board-box-o):hover { 
+   filter: contrast(95%);
 }
 
-img {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-}
-
-header {
-    text-align: center; 
-    padding: 0; 
-    margin: 0;
-    background-color: #2e4452; 
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);  
-}
-
-h1 {
-    font-family: "Tac One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 100px;
-    padding: 0;
-    margin: 0;
-    color:#d89d2e; 
-}
+/* ------------------PLAYERS-INFO-DISPLAY--------------- */
 
 .players-info-main {
+    visibility: hidden;    
     width: 80vw;    
 }
 
@@ -166,14 +218,24 @@ h1 {
 }
 
 .player1-info,
-.player2-info {
-    display: flex;
+.player2-info {    
+    display: grid;
     align-items: center;
+    justify-items: center;
     font-family: "Tac One", sans-serif;
     font-size: 36px; 
-    background-color: #2e4452; ; 
+    background-color:var(--grey);  
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
     padding: 2px 10px; 
+    border-radius: 8px;
+}
+
+.player1-glow {
+    box-shadow: 0 0 0.5em 0.1rem rgb(112, 160, 64);
+}
+
+.player2-glow {
+    box-shadow: 0 0 0.5em 0.1rem rgb(69, 157, 168);
 }
 
 .player1-info {
@@ -182,6 +244,12 @@ h1 {
 
 .player2-info {
     color: rgb(66, 109, 201);
+}
+
+.player1-name,
+.player2-name {
+    color: #aa8033;;
+    font-size: 32px;
 }
 
 input {
@@ -209,32 +277,17 @@ input {
 }
 
 ::placeholder {
-    color: #2e4452;
+    color: var(--grey); 
     font-weight: bold;
     padding-left: 10px;    
 }
 
-#button-start {
-    border: none;
-    border-radius: 8px;
-    background-color: #d89d2e; 
-    cursor: pointer;   
-    width: 100%;
-    text-align: center;
-    font-family: "Tac One", sans-serif;
-    color: rgb(217, 224, 147);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    font-size: 2.4rem;
+img {    
+    align-self: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
 }
 
-#button-restart {
-    border: none;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0);
-    background-image: url(images/restart.svg);
-    cursor: pointer;
-    width: 80px; 
-    height: 80px;
-    justify-self: center;   
-}
+
 

@@ -5,8 +5,7 @@ const gameboard = (function() {
     const board = ["", "", "", "", "", "", "", "", ""]
     
     function update(index, currentPlayerSymbol) { 
-        board[index] = currentPlayerSymbol;
-        console.log(board)
+        board[index] = currentPlayerSymbol;        
         htmlController.render();        
         htmlController.updateSymboles();
     };

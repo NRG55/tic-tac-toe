@@ -7,7 +7,6 @@ const playersList = (function(){
         symbol
       }       
     }
-
     return {        
         createPlayer ,
         players      
