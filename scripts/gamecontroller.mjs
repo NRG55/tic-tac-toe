@@ -43,12 +43,15 @@ const gameController = (function() {
         if (isWin(playersList.players[currentPlayerIndex].symbol)) {
             gameOver = true;            
             result.style.display = 'grid'; 
-            if(playersList.players[currentPlayerIndex].symbol === 'X') {         
+            if (playersList.players[currentPlayerIndex].symbol === 'X') { 
+                console.log(playersList.players[currentPlayerIndex].symbol)        
             htmlController.displayMessage(`Player 1 <br> 
                                           ${playersList.players[currentPlayerIndex].name} <br> Wins!`); 
             } 
+            if (playersList.players[currentPlayerIndex].symbol === 'O') {
             htmlController.displayMessage(`Player 2 <br> 
-                                          ${playersList.players[currentPlayerIndex].name} <br> Wins!`);         
+                                          ${playersList.players[currentPlayerIndex].name} <br> Wins!`);
+            }         
         } else if (isDraw()) {
             gameOver = true; 
             result.style.display = 'grid';              
