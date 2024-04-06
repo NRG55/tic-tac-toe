@@ -115,10 +115,8 @@ main {
 .gameboard-container { 
     display: none;  
     position: relative;
-    width: 60%;
-    padding-bottom: 60%; 
-    max-width: 900px; 
-    max-height: 900px;         
+    width: 50%;
+    padding-bottom: 50%;        
 }
 
 .gameboard {
