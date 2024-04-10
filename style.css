@@ -9,8 +9,7 @@ body {
     margin: 0;
     background-color: #2e4452;
     height: 100vh; 
-    width: 100vw;
-               
+    width: 100vw;               
 }
 
 /* -----------------HEADER---------------- */
@@ -173,13 +172,13 @@ main {
     min-height: 300px; 
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px; 
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 600;
     font-family: sans-serif;
     color: white;   
     align-content: center;
     justify-content: center;
-    gap: 40px;
+    gap: 28px;
 }
 
 .board-box-x::before,
@@ -268,7 +267,7 @@ main {
 .player2-name {
     color: #aa8033;
     font-family: sans-serif;
-    font-weight:500;
+    font-weight:600;
     font-size: 32px;
 }
 
