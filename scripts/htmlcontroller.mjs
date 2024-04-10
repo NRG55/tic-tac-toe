@@ -18,8 +18,8 @@ const htmlController = (() => {
     function render() { 
         let boardHtml = "";     
 
-        gameboard.board.forEach((box, index) => {
-            boardHtml += `<div class="board-box" id="${index}">${box}</div>`            
+        gameboard.board.forEach((value, index) => {
+            boardHtml += `<div class="board-box" id="${index}">${value}</div>`            
         })
         gameBoard.innerHTML = boardHtml;
         

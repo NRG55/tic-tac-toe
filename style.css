@@ -174,7 +174,8 @@ main {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px; 
     font-size: 3.5rem;
-    font-family: "Tac One", sans-serif;
+    font-weight: 600;
+    font-family: sans-serif;
     color: white;   
     align-content: center;
     justify-content: center;
@@ -265,7 +266,9 @@ main {
 
 .player1-name,
 .player2-name {
-    color: #aa8033;;
+    color: #aa8033;
+    font-family: sans-serif;
+    font-weight:500;
     font-size: 32px;
 }
 
